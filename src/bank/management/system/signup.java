@@ -3,11 +3,15 @@ package bank.management.system;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 import com.toedter.calendar.*;
 import javax.swing.*;
 
-public class signup extends JFrame{
+public class signup extends JFrame implements ActionListener{
+
+    JButton next;
 
     JTextField textName, textFName, textEmail, textAddress, textCity, textState, textPin;
 
@@ -199,7 +203,15 @@ public class signup extends JFrame{
         textPin.setBounds(300, 650, 400, 30);
         add(textPin);
 
+        
 
+        next = new JButton("Next");
+        next.setFont(new Font("Ralway",Font.BOLD, 14));
+        next.setBackground(Color.BLACK);
+        next.setForeground(Color.WHITE);
+        next.setBounds(620,710,80,30);
+        next.addActionListener(this);
+        add(next);
 
         getContentPane().setBackground(new Color(222,255,228));
         setLayout(null);
@@ -207,6 +219,12 @@ public class signup extends JFrame{
         setLocation(360,40);
         setVisible(true);
     }
+
+    @Override
+     public void actionPerformed(ActionEvent e){
+
+     }
+
     public static void main(String[] args) {
         new signup();
     }
