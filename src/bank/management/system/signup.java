@@ -9,11 +9,11 @@ import javax.swing.*;
 
 public class signup extends JFrame{
 
-    JTextField textName, textFName;
+    JTextField textName, textFName, textEmail, textAddress, textCity, textState, textPin;
 
     JDateChooser dateChooser;
 
-    JRadioButton male, female, other;
+    JRadioButton male, female, other, married, unmarried;
 
     Random random = new Random(); 
     long first5digit = (random.nextLong() % 9000L) + 1000L;
@@ -104,11 +104,11 @@ public class signup extends JFrame{
         genderGroup.add(other);
 
 
-       male.setFont(new Font("Raleway", Font.BOLD, 20));
+       //male.setFont(new Font("Raleway", Font.BOLD, 20));
        male.setBackground(new Color(222,255,228));
-       female.setFont(new Font("Raleway", Font.BOLD, 20));
+       //female.setFont(new Font("Raleway", Font.BOLD, 20));
        female.setBackground(new Color(222,255,228));
-       other.setFont(new Font("Raleway", Font.BOLD, 20));
+       //other.setFont(new Font("Raleway", Font.BOLD, 20));
        other.setBackground(new Color(222,255,228));
 
         male.setBounds(300, 350, 90, 30);
@@ -123,13 +123,81 @@ public class signup extends JFrame{
          // Email
         JLabel email = new JLabel("Email Address:");
         email.setFont(new Font("Raleway", Font.BOLD, 20));
-        email.setBounds(100, 340, 200, 30);
+        email.setBounds(100, 400, 200, 30);
         add(email);
 
         textEmail = new JTextField();
         textEmail.setFont(new Font("Raleway", Font.PLAIN, 16));
-        textEmail.setBounds(300, 340, 400, 30);
+        textEmail.setBounds(300, 400, 400, 30);
         add(textEmail);
+
+
+         // Marital Status
+
+        JLabel marital = new JLabel("Marital Status:");
+        marital.setFont(new Font("Raleway", Font.BOLD, 20));
+        marital.setBounds(100, 450, 200, 30);
+        add(marital);
+
+        married = new JRadioButton("Married");
+        unmarried = new JRadioButton("Unmarried");
+
+        ButtonGroup maritalGroup = new ButtonGroup();
+        maritalGroup.add(married);
+        maritalGroup.add(unmarried);
+
+        married.setBounds(300, 450, 100, 30);
+        married.setBackground(new Color(222,255,228));
+        unmarried.setBounds(400, 450, 200, 30);
+        unmarried.setBackground(new Color(222,255,228));
+
+        add(married);
+        add(unmarried);
+
+
+        // Address
+        JLabel address = new JLabel("Address:");
+        address.setFont(new Font("Raleway", Font.BOLD, 20));
+        address.setBounds(100, 500, 200, 30);
+        add(address);
+
+        textAddress = new JTextField();
+        textAddress.setFont(new Font("Raleway", Font.PLAIN, 16));
+        textAddress.setBounds(300, 500, 400, 30);
+        add(textAddress);
+
+        // City
+        JLabel city = new JLabel("City:");
+        city.setFont(new Font("Raleway", Font.BOLD, 20));
+        city.setBounds(100, 548, 200, 30);
+        add(city);
+
+        textCity = new JTextField();
+        textCity.setFont(new Font("Raleway", Font.PLAIN, 16));
+        textCity.setBounds(300, 550, 400, 30);
+        add(textCity);
+
+        // State
+        JLabel state = new JLabel("State:");
+        state.setFont(new Font("Raleway", Font.BOLD, 20));
+        state.setBounds(100, 600, 200, 30);
+        add(state);
+
+        textState = new JTextField();
+        textState.setFont(new Font("Raleway", Font.PLAIN, 16));
+        textState.setBounds(300, 600, 400, 30);
+        add(textState);
+
+        // Pin Code
+        JLabel pin = new JLabel("Pin Code:");
+        pin.setFont(new Font("Raleway", Font.BOLD, 20));
+        pin.setBounds(100, 650, 200, 30);
+        add(pin);
+
+        textPin = new JTextField();
+        textPin.setFont(new Font("Raleway", Font.PLAIN, 16));
+        textPin.setBounds(300, 650, 400, 30);
+        add(textPin);
 
 
 
