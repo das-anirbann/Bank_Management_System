@@ -222,7 +222,49 @@ public class signup extends JFrame implements ActionListener{
 
     @Override
      public void actionPerformed(ActionEvent e){
+      
+          String form_no = first;
+          String name = textName.getText();
+          String fName = textFName.getText(); 
+          String dob = ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText();
+          String gender = null;
+          if(male.isSelected()){
+            gender = "male";
+          }
+          else if (female.isSelected()) {
+             gender = "female";
+          } else if (other.isSelected()){
+            gender = "other";
+          }
+          String email =textEmail.getText();
+          String marital = null;
+          if(married.isSelected()){
+             marital = "married";
+          }
+          else if(unmarried.isSelected()){
+            marital = "unmarried";
+          }
+          String address= textAddress.getText();
+          String city= textCity.getText();
+          String state = textState.getText();
+          String  Pincode = textPin.getText();
 
+
+          if(textName.getText().equals("")){
+                JOptionPane.showMessageDialog(null,"Please fill the details kindely");
+                return;
+          }
+          try {
+              Conn Con1 = new Conn();
+              String q = "insert into Signup values(' "+form_no +"',' "+name+"' ,' "+fName +"',' "+dob+"' ,' "+gender+"' ,' "+email+"' ,' "+marital+"' ,' "+address +"',' "+city+"' ,' "+state+"',' "+Pincode+"')"; 
+              Con1.statement.executeUpdate(q);
+              new Signup2();
+              setVisible(false);
+            }
+            catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Something went wrong: " + ex.getMessage());
+          }
      }
 
     public static void main(String[] args) {
