@@ -5,9 +5,12 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.Random;
 import com.toedter.calendar.*;
 import javax.swing.*;
+/*import java.text.SimpleDateFormat;*/
+import java.util.Date;
 
 public class signup extends JFrame implements ActionListener{
 
@@ -21,7 +24,6 @@ public class signup extends JFrame implements ActionListener{
 
     Random random = new Random(); 
     long first5digit = (random.nextLong() % 9000L) + 1000L;
-    
     String first = " "+ Math.abs(first5digit);
 
     signup(){
@@ -255,10 +257,15 @@ public class signup extends JFrame implements ActionListener{
                 return;
           }
           try {
+              SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MMM-yyyy");
+              java.util.Date parsed = inputFormat.parse(dob);
+              java.sql.Date dobSql = new java.sql.Date(parsed.getTime());
+
               Conn Con1 = new Conn();
-              String q = "insert into Signup values(' "+form_no +"',' "+name+"' ,' "+fName +"',' "+dob+"' ,' "+gender+"' ,' "+email+"' ,' "+marital+"' ,' "+address +"',' "+city+"' ,' "+state+"',' "+Pincode+"')"; 
+              String q = "insert into Signup values('"+form_no +"','"+name+"' ,'"+fName +"','"+dobSql+"' ,'"+gender+"' ,'"+email+"' ,'"+marital+"' ,'"+address +"','"+city+"' ,'"+state+"','"+Pincode+"')"; 
+              
               Con1.statement.executeUpdate(q);
-              new Signup2();
+              new Signup2(form_no);
               setVisible(false);
             }
             catch (Exception ex) {
