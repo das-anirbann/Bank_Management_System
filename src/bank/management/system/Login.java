@@ -127,7 +127,8 @@ public class Login extends JFrame implements ActionListener{
             
           }
           else if(e.getSource() == button3){
-
+             new signup();
+             setVisible(false);
           }
        }catch(Exception E){
          E.printStackTrace();

@@ -51,7 +51,7 @@ public class signup extends JFrame implements ActionListener{
         
         JLabel label3 = new JLabel("Personal Details");
         label3.setFont(new Font("Raleway",Font.BOLD,22));
-        label3.setBounds(200,90,600,30);
+        label3.setBounds(330,95,600,30);
         add(label3);
 
 
