@@ -4,10 +4,8 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.awt.Font;
-import java.awt.*;
-import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
 public class Login extends JFrame implements ActionListener{
@@ -16,7 +14,7 @@ public class Login extends JFrame implements ActionListener{
 
    JTextField textField;
 
-   JPasswordField passwordField;
+   JPasswordField passwordField1;
 
    JButton button1, button2, button3;
    Login(){
@@ -68,10 +66,10 @@ public class Login extends JFrame implements ActionListener{
       label_3.setBounds(150,250,375,30);
       add(label_3);
   
-      passwordField = new JPasswordField(15);
-      passwordField.setBounds(325,250,230,30);
-      passwordField.setFont(new Font("Arial", Font.BOLD,14));
-      add(passwordField);
+      passwordField1 = new JPasswordField(15);
+      passwordField1.setBounds(325,250,230,30);
+      passwordField1.setFont(new Font("Arial", Font.BOLD,14));
+      add(passwordField1);
       
 
       button1 = new JButton("SIGN IN");
@@ -112,6 +110,7 @@ public class Login extends JFrame implements ActionListener{
       setTitle("Bank Management System- Login");    
       setSize(850,480);
       setLocation(450,200);
+      //setUndecorated(true);
       setVisible(true);
       
    }
@@ -121,7 +120,18 @@ public class Login extends JFrame implements ActionListener{
        
        try{
           if(e.getSource() == button1){
+               Conn c = new Conn();
+               String cardno = textField.getText();
+               String pin = passwordField1.getText();
+               String q = "select * from login where cardNumber= '"+cardno+"' and pinNumber='"+pin+"'";
+               ResultSet resultSet = c.statement.executeQuery(q);
 
+            if(resultSet.next()){
+               setVisible(false);
+               new main_class(pin);
+            }else{
+               JOptionPane.showMessageDialog(null, "Incorrect Card Number Or Pin");
+            }
           }
           else if (e.getSource() == button2) {
             
@@ -129,7 +139,7 @@ public class Login extends JFrame implements ActionListener{
           else if(e.getSource() == button3){
              new signup();
              setVisible(false);
-          }
+          } 
        }catch(Exception E){
          E.printStackTrace();
        }
