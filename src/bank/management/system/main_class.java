@@ -93,12 +93,21 @@ public class main_class extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent a){
            if(a.getSource()==b1){
-            new deposite(pin);
+            new deposit(pin);
             setVisible(false);
            }
            else if(a.getSource()==b7){
             System.exit(0);
            }
+          else if(a.getSource()==b2){
+               new withdrawl(pin);
+               setVisible(false);
+          }
+          else if(a.getSource()==b6){
+            new balanceEnquery(pin);
+            setVisible(false);
+          }
+
     }
 
     public static void main(String[] args) {

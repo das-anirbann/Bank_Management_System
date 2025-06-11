@@ -10,12 +10,12 @@ import java.util.*;
 
 import javax.swing.*;
 
-public class deposite extends JFrame implements ActionListener{
+public class deposit extends JFrame implements ActionListener{
     String pinNumber;
     TextField textField;
     JButton b1,b2;
 
-    deposite(String pinNumber){
+    deposit(String pinNumber){
         this.pinNumber = pinNumber;
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/atm2.png"));
@@ -68,11 +68,11 @@ public class deposite extends JFrame implements ActionListener{
         Date  date = new Date();
         if(e.getSource()==b1){
             if(textField.getText().equals("")){
-                JOptionPane.showMessageDialog(null,"Please enter the amount to deposite");
+                JOptionPane.showMessageDialog(null,"Please enter the amount to deposit");
             }else{
                 Conn c= new Conn();
-                c.statement.executeUpdate("insert into bank values('"+pinNumber+"','"+ date+"' ,'deposite' ,'" + amount +"')");
-                JOptionPane.showMessageDialog(null,"Rs. "+amount+" Deposite Succesfully");
+                c.statement.executeUpdate("insert into bank values('"+pinNumber+"','"+ date+"' ,'deposit' ,'" + amount +"')");
+                JOptionPane.showMessageDialog(null,"Rs. "+amount+" Deposit Succesfully");
                 setVisible(false);
                 new main_class(pinNumber);
             }
@@ -89,6 +89,6 @@ public class deposite extends JFrame implements ActionListener{
 
 
     public static void main(String[] args) {
-        new deposite(" ");
+        new deposit(" ");
     }
 }

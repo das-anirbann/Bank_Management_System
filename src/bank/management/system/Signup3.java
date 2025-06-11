@@ -194,7 +194,7 @@ public class Signup3 extends JFrame implements ActionListener {
 
                     JOptionPane.showMessageDialog(null, "Card No: " + cardNumber + "\nPIN: " + pinNumber);
                    
-                    new deposite(pinNumber);
+                    new deposit(pinNumber);
                     // Next step: go to login page or home screen
                     setVisible(false);
                     
