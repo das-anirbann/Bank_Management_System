@@ -20,7 +20,7 @@ public class Fastcash extends JFrame implements ActionListener{
         l3.setBounds(0,0,1550,830);
         add(l3);
 
-        JLabel label = new JLabel("please select your Withdrawl amount");
+        JLabel label = new JLabel("PLEASE SELECT YOUR WITHDRAWL AMOUNT");
         label.setBounds(430,150,700,35);
         label.setForeground(Color.WHITE);
         label.setFont(new Font("System",Font.BOLD,28));
